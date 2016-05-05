@@ -293,6 +293,12 @@ func save(w http.ResponseWriter, r *http.Request) {
 		Slug  string `json:"slug"`
 	})
 
+	key := r.URL.Query().Get("key")
+	if key != os.Getenv("FOCUSKEY") {
+		respond(w, r, http.StatusUnauthorized, false)
+		return
+	}
+
 	var data Page
 	err := parseBody(r.Body, &data)
 	if err != nil {
@@ -357,7 +363,7 @@ func delHandler(w http.ResponseWriter, r *http.Request) {
 	key := r.URL.Query().Get("key")
 	id := getID(r.URL.Path, "/del/")
 	pageID, err := strconv.ParseInt(id, 10, 64)
-	if err != nil || key != "wtfhc" || len(id) == 0 {
+	if err != nil || key != os.Getenv("FOCUSKEY") || len(id) == 0 {
 		if err != nil {
 			log.Println(err.Error())
 		} else {
