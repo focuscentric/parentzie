@@ -1,0 +1,13 @@
+http://parentzie.com/content/games/sas1/bernache.jpg|Colvert|Bernache|Oie domestique|Goéland|2
+http://parentzie.com/content/games/sas1/cardinal.jpg|Cardinal rouge|Bernache|Colibri d'Anna|Paruline à gorge jaune|1
+http://parentzie.com/content/games/sas1/chardonneret.jpg|Corbeau|Chardonneret jaune|Macareux|Mergule nain|2
+http://parentzie.com/content/games/sas1/chouette.jpg|Harfang des neiges|Pétrel cul-blanc|Héron vert|Pigeon|1
+http://parentzie.com/content/games/sas1/colibri.jpg|Barge rousse|Chevalier semi-palmé|Colvert|Colibri|4
+http://parentzie.com/content/games/sas1/colvert.jpg|Carouge à tête jaune|Dindon sauvage|Canard Colvert|Pélican brun|3
+http://parentzie.com/content/games/sas1/corbeau.jpg|Urubu à tête rouge|Corbeau|Phalarope de Wilson|Colibri|2
+http://parentzie.com/content/games/sas1/geaibleu.jpg|Effraie des clochers|Tourterelle triste|Bec-en-ciseau noir|Geai bleu|4
+http://parentzie.com/content/games/sas1/heron.jpg|Petit chevalier|Petit pingouin|Petit Duc maculé|Grand Héron|4
+http://parentzie.com/content/games/sas1/macareux.jpg|Macareux|Mouette|Corneille|Hibou|1
+http://parentzie.com/content/games/sas1/cormoran.jpg|Tourterelles à ailes blanches|Coulicou à bec noir|Cormoran|Canard noir|3
+http://parentzie.com/content/games/sas1/merle.jpg|Merle d'Amérique|Grand pic|Pipit d'Amérique|Carouge à tête jaune|1
+http://parentzie.com/content/games/sas1/picflamboyant.jpg|Euplecte de Zanzibar|Bulbul à semi-collier|Pic flamboyant|Passerin nonpareil|3

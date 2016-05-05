@@ -1,0 +1,128 @@
+{{ define "content" }}
+<div class="col-md-8">
+  {{with .Featured}}
+          <div class="row main_content_inner">
+            <div class="col-md-4">
+              <div class="newImage_area">
+                <figure>
+                  <a href="/article/{{.Slug}}">
+                    <img src="{{.Thumbnail}}" alt="{{.Title}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="newImage_details brown_heading">
+                <h2><a href="/article/{{.Slug}}">{{.Title}}</a></h2>
+                <span>{{.PublishedText}}</span>
+                <p>
+                  {{.Excerpt}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+          <div class="row single_title_content">
+            <div class="padding_less col-sm-2">
+              <div class="single_t_image">
+                <figure>
+                  <a href="/auteur/{{.Author.Slug}}">
+                    <img src="{{.Author.Thumbnail}}" alt="{{.AuthorName}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="title_name col-sm-7">
+              <a href="/auteur/{{.Author.Slug}}">{{.AuthorName}}</a>
+
+            </div>
+            <div class="title_actual col-sm-3">
+              <a href="/articles/{{.TagSlug}}">{{.Tag}}</a>
+            </div>
+
+          </div>
+          <!--end row-->
+
+          <div>
+            <h2 class="contenuTitlt">Derniers articles</h2>
+          </div>
+          {{end}}
+          {{range .Articles}}
+          <div class="contenu_duarea row">
+            <div class="col-md-3">
+              <div class="newImage_area">
+                <figure>
+                  <a href="/article/{{.Slug}}">
+                    <img src="{{.Thumbnail}}" alt="{{.Title}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="contenu_detailarea">
+                <h2><a href="/article/{{.Slug}}">{{.Title}}</a></h2>
+
+                <p>
+                  {{.Excerpt}}
+                </p>
+
+                <a href="/article/{{.Slug}}" class="lireplus">+ lire plus</a>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+          {{if .Author}}
+          <div class="row single_title_content single_title_content2">
+            <div class="padding_less col-sm-2">
+              <div class="single_t_image">
+                <figure>
+                  <a href="/auteur/{{.Author.Slug}}">
+                    <img src="{{.Author.Thumbnail}}" alt="{{.AuthorName}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="title_name title_name2 col-sm-7">
+              <a href="/auteur/{{.Author.Slug}}">{{.AuthorName}}</a>
+            </div>
+            <div class="title_actual title_actual2 col-sm-3">
+              <a href="/articles/{{.TagSlug}}">{{.Tag}}</a>
+            </div>
+
+          </div>
+          <!--end row-->
+          {{end}}
+          {{end}}
+          
+          <div class="row">
+            <div class="pagination_list">
+              <ul>
+                {{if .HasPreviousPage}}
+                <li><a href="{{ .PreviousPageURL }}">Pécédent</a></li>
+                {{end}}
+                {{if .HasNextPage}}
+                <li><a href="{{ .NextPageURL }}">Suivant</a></li>
+                {{end}}
+              </ul>
+            </div>
+          </div>
+          <!--pagination-->
+</div>
+<!--end col-md-8-->
+{{ end }}
+
+{{ define "sidebar" }}
+{{if .SubMenu}}
+<div id="content_sub_sections">
+  <ul>
+    {{range $k, $v := .SubMenu}}
+    <li><a href="/articles/{{$v.Slug}}">{{$k}}</a></li>
+    {{end}}
+    </ul>
+</div>
+
+<p>&nbsp;</p>
+{{end}}
+{{end}}

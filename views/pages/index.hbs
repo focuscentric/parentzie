@@ -1,0 +1,111 @@
+{{ define "content" }}
+<div class="col-md-8">
+  {{with .Featured}}
+          <div class="row main_content_inner">
+            <div class="col-md-4">
+              <div class="newImage_area">
+                <figure>
+                  <a href="/article/{{.Slug}}">
+                    <img src="{{.Thumbnail}}" alt="{{.Title}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="newImage_details brown_heading">
+                <h2><a href="/article/{{.Slug}}">{{.Title}}</a></h2>
+                <span>{{.PublishedText}}</span>
+                <p>
+                  {{.Excerpt}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+          <div class="row single_title_content">
+            <div class="padding_less col-sm-2">
+              <div class="single_t_image">
+                <figure>
+                  <a href="/auteur/{{.Author.Slug}}">
+                    <img src="{{.Author.Thumbnail}}" alt="{{.AuthorName}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="title_name col-sm-7">
+              <a href="/auteur/{{.Author.Slug}}">{{.AuthorName}}</a>
+
+            </div>
+            <div class="title_actual col-sm-3">
+              <a href="/articles/{{.TagSlug}}">{{.Tag}}</a>
+            </div>
+
+          </div>
+          <!--end row-->
+
+          <div>
+            <h2 class="contenuTitlt">Derniers articles</h2>
+          </div>
+          {{end}}
+          {{range .Articles}}
+          <div class="contenu_duarea row">
+            <div class="col-md-3">
+              <div class="newImage_area">
+                <figure>
+                  <a href="/article/{{.Slug}}">
+                    <img src="{{.Thumbnail}}" alt="{{.Title}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="contenu_detailarea">
+                <h2><a href="/article/{{.Slug}}">{{.Title}}</a></h2>
+
+                <p>
+                  {{.Excerpt}}
+                </p>
+
+                <a href="/article/{{.Slug}}" class="lireplus">+ lire plus</a>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+          {{if .Author}}
+          <div class="row single_title_content single_title_content2">
+            <div class="padding_less col-sm-2">
+              <div class="single_t_image">
+                <figure>
+                  <a href="/auteur/{{.Author.Slug}}">
+                    <img src="{{.Author.Thumbnail}}" alt="{{.AuthorName}}" class="img-responsive" />
+                  </a>
+                </figure>
+              </div>
+            </div>
+            <div class="title_name title_name2 col-sm-7">
+              <a href="/auteur/{{.Author.Slug}}">{{.AuthorName}}</a>
+            </div>
+            <div class="title_actual title_actual2 col-sm-3">
+              <a href="/articles/{{.TagSlug}}">{{.Tag}}</a>
+            </div>
+
+          </div>
+          <!--end row-->
+          {{end}}
+          {{end}}
+          
+          <div class="row">
+            <div class="pagination_list">
+              <ul>
+                <li {{if eq .PageIndex 1}}class="active"{{end}}><a href="/accueil/1">1</a></li>
+                <li {{if eq .PageIndex 2}}class="active"{{end}}><a href="/accueil/2">2</a></li>
+                <li {{if eq .PageIndex 3}}class="active"{{end}}><a href="/accueil/3">3</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--pagination-->
+</div>
+<!--end col-md-8-->
+{{ end }}

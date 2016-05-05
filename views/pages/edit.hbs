@@ -1,0 +1,131 @@
+{{ define "content" }}
+<input type="hidden" id="pageid" value="{{ .Article.ID }}" />
+<div class="col-md-8">
+<div class="row main_content_inner">
+<div class="col-md-4">
+  <div class="newImage_area">
+    <figure>
+      <img src="{{ .Article.Thumbnail }}" alt="{{ .Article.Title }}" class="img-responsive" />
+    </figure>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="newImage_details brown_heading">
+    {{if eq .Article.ID 0}}
+    <input type="text" id="slug" value="{{ .Article.Slug }}" placeholder="url-de-larticle" style="width: 300px;" />
+    {{else}}
+    <input type="hidden" id="slug" value="{{ .Article.Slug }}" />
+    {{end}}
+    <h2><input type="text" id="title" value="{{ .Article.Title }}" placeholder="Titre de la page" style="width: 300px;" /></h2>
+    <span><input type="text" id="pub-date" value="{{ .Article.Published }}" /></span>
+    <p>
+      Image URL de Amazon<br />
+      <input type="text" id="img-url" value="{{ .Article.Thumbnail }}" placeholder="URL de Amazon" style="width: 300px;" />
+    </p>
+      <p>
+          <input type="checkbox" id="featured" {{if .Article.IsFeatured}}checked{{end}} /> Article featured<br />
+          <input type="checkbox" id="free" {{if .Article.IsFree}}checked{{end}} /> Est gratuit<br />
+          <input type="checkbox" id="audio" {{if .Article.HasAudio}}checked{{end}} /> Avec audio<br />
+          <input type="checkbox" id="video" {{if .Article.HasVideo}}checked{{end}} /> Avec video<br />
+      </p>
+  </div>
+</div><!--end col-md-10-->
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="newImage_details newImage_details2">
+      <div id="toolbar" style="position: fixed;top: 100px;left:0px;z-index:2000">
+            <a  class="btn btn-sm btn-default"  data-elm="preview" data-preview="0">Preview</a><br />
+            <a class="btn btn-sm btn-default"  data-elm="h2">Titre</a><br />
+            <a class="btn btn-sm btn-default"  data-elm="h3">Sous-titre</a><br />
+            <a class="btn btn-sm btn-default"  data-elm="h4">Petit titre</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="strong">Gras</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="em">Italic</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="a">Lien</a><br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="img">Image</a><br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="p">Paragraphe</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="pil">Image gauche</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="pid">Image droite</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="ul">Liste (bulle)</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="ol">Liste (numeric)</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="q">Quote</a> <br />
+            <a class="btn btn-sm btn-default" href="#" data-elm="t">Tableau</a>
+        </div>
+        <textarea id="editor" style="width: 100%;height: 650px;">{{ .Article.BodyHTML }}</textarea>
+
+        <div id="preview">{{ .Article.BodyHTML }}</div>
+    </div>
+  </div>
+</div>
+      
+<div class="row single_title_content">
+  <div class="padding_less col-sm-2">
+    <div class="single_t_image">
+    </div>
+  </div>
+  <div class="title_name col-sm-7">
+    Catégorie: 
+    <select id="category">
+          <option value=""></option>
+          {{$c := .Article.Category}}
+          {{range $k, $v := .Categories}}
+            <option value="{{ $k }}" {{if eq $c $k}}selected{{end}}>{{ $k }}</option>
+          {{end}}
+      </select>
+  </div>
+  <div class="title_actual col-sm-3">
+    ...
+  </div>
+  
+</div><!--end row-->
+
+<div class="">
+  <button id="save">Sauvegarder</button>
+  <button id="delete" style="background-color: red; color: #fff;">Effacer</button>
+</div>
+
+</div>
+{{ end }}
+
+
+{{ define "sidebar" }}
+<aside class="article_sidebar">
+  <h2>Auteur</h2>
+  <div class="row single_article_sidebar">
+    <div class="single_columnimage col-sm-2"></div>
+    <div class="single_columnDetails col-sm-8">
+      <select id="author">
+          {{$a := .Article.AuthorName}}
+          {{range $ak, $av := .Authors}}
+            <option value="{{ $ak }}" {{if eq $a $ak}}selected{{end}}>{{$ak}}</option>
+          {{end}}
+      </select>
+    </div>
+    <div class="single_columnimage col-sm-2"></div>
+  </div>
+</aside>
+<aside class="article_sidebar article_sidebar2 article_sidebar21">
+  <h2>Tag</h2>
+  <div class="row single_article_sidebar">
+    <div class="single_columnimage col-sm-2"></div>
+    <div class="single_columnDetails col-sm-8">
+      {{$t := .Article.Tag}}
+      {{$tags := .Tags}}
+      {{range $ck, $cv := .Categories}}
+        <p><strong>{{$ck}}</strong></p>
+        {{range $tk, $tv := $tags}}
+          {{if eq $ck $tv.Category}}
+            <input type="radio" name="tag" value="{{$tk}}" {{if eq $t $tk}}checked{{end}} /> {{$tk}}<br />
+          {{end}}
+        {{end}}
+      {{end}}
+    </div>
+    <div class="single_columnimage col-sm-2"></div>
+  </div>
+</aside>
+{{ end }}
+
+{{define "scripts"}}
+<script type="text/javascript" src="/content/js/edit.js?v=3"></script>
+{{end}}

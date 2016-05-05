@@ -1,0 +1,128 @@
+{{ define "content" }}
+<div class="col-md-8">
+<div class="row main_content_inner">
+<div class="col-md-4">
+  <div class="newImage_area">
+    <figure>
+      <img src="{{ .Article.Thumbnail }}" alt="{{ .Article.Title }}" class="img-responsive" />
+    </figure>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="newImage_details brown_heading">
+    <h2>{{ .Article.Title }}</h2>
+    <span>{{ .Article.PublishedText }}</span>
+    <p>
+      Estimation du temps de lecture: <strong>{{.EstimatedReadTime}} minute(s)</strong>
+    </p>
+  </div>
+</div><!--end col-md-10-->
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="newImage_details newImage_details2">
+      {{ .Article.BodyHTML }}
+    </div>
+  </div>
+</div>
+      
+<div class="row single_title_content">
+  <div class="padding_less col-sm-2">
+    <div class="single_t_image">
+      <figure>
+        <a href="/auteur/{{ .Author.Slug }}">
+          <img src="{{ .Author.Thumbnail }}" alt="{{ .Article.AuthorName }}" class="img-responsive" />
+        </a>
+      </figure>
+    </div>
+  </div>
+  <div class="title_name col-sm-7">
+    <a href="/auteur/{{ .Author.Slug }}">{{ .Article.AuthorName }}</a><br />
+    <div style="text-transform: none !important;">
+    {{ .Author.BioHTML }}
+    </div>
+  </div>
+  <div class="title_actual col-sm-3">
+    <a href="/articles/{{ .Article.TagSlug }}">{{ .Article.Tag }}</a>
+  </div>
+  
+</div><!--end row-->
+<div class="hidden row all_mini_plugin" style="margin-top: -10px">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-10">{{ .Author.BioHTML }}</div>
+</div>
+
+<div class="">
+  <h2 class="contenuTitlt">Commentaires</h2>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="comment_box">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'parentzie'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </div>
+</div><!--end comment box row-->
+</div>
+{{ end }}
+
+
+{{ define "sidebar" }}
+{{range $i, $p := .ByAuthor }}
+<aside class="article_sidebar{{ sidebarOdd $i true }}">
+  {{if isFirst $i }}
+  <h2>{{ .AuthorName }} écrit</h2>
+  {{end}}
+  
+  <div class="row single_article_sidebar">
+    <div class="single_columnimage col-sm-4">
+      <figure>
+        <a href="/article/{{ .Slug}}">
+        <img src="{{ .Thumbnail }}" alt="{{ .Title }}" class="img-responsive">
+        </a>
+      </figure>
+    </div>
+    
+    <div class="single_columnDetails col-sm-8">
+      <a href="/article/{{ .Slug }}">{{ .Title }} </a>
+    </div>
+  </div>
+</aside>
+{{end}}
+{{range $i, $p := .Popular }}
+<aside class="article_sidebar article_sidebar2 article_sidebar2{{ sidebarOdd $i false }}">
+  {{if isFirst $i }}
+  <h2>Sujet similaire</h2>
+  {{end}}
+  
+  <div class="row single_article_sidebar">
+    <div class="single_columnimage col-sm-4">
+      <figure>
+        <a href="/article/{{ .Slug}}">
+        <img src="{{ .Thumbnail }}" alt="{{ .Title }}" class="img-responsive">
+        </a>
+      </figure>
+    </div>
+    
+    <div class="single_columnDetails col-sm-8">
+      <a href="/article/{{ .Slug }}">{{ .Title }} </a>
+    </div>
+  </div>
+</aside>
+{{end}}
+<p>&nbsp;</p>
+{{ end }}

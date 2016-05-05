@@ -1,0 +1,281 @@
+{{ define "base" }}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Description }}">
+  <meta name="keywords" content="{{ .Keywords }}">
+  
+ {{if .HasImage}}
+  <meta itemprop="name" content="Parentzie" />
+  <meta itemprop="description" content="Vivre la famille naturellement" />
+
+  <meta itemprop="image" content="{{ .Thumbnail }}" />
+  <meta name="twitter:card" content="{{ .Thumbnail }}" />
+  <!-- Twitter summary card with large image must be at least 280x150px -->
+  <meta name="twitter:image:src" content="{{ .Thumbnail }}" />
+  <meta property="og:image" content="{{ .Thumbnail }}" />
+
+  <meta name="twitter:site" content="parentzie" />
+  <meta name="twitter:title" content="Parentzie - Vivre la famille naturellement" />
+  <meta name="twitter:description" content="Vivre la famille naturellement" />
+  <meta name="twitter:creator" content="parentzie" />
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Parentzie - Vivre la famille naturellement" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ .URL }}" />
+  <meta property="og:description" content="{{ .Description }}" />
+  <meta property="og:site_name" content="Parentzie" />
+  <meta property="fb:admins" content="311194251051" />
+  {{end}} 
+  
+  <meta name="author" content="Parentzie" />
+  <meta name="language" content="fr" />
+  <meta name="robots" content="INDEX, FOLLOW" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/x-icon" href="/content/images/parentzie.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="/content/images/parentzie.ico" />
+	<link rel="bookmark icon" type="image/x-icon" href="/content/images/parentzie.ico" />
+  
+  <link href='https://fonts.googleapis.com/css?family=Cabin:400,700italic,700,600italic,600,500italic,500,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,900,800,700,600,500,300,100,200' rel='stylesheet' type='text/css'>
+  <link href="http://allfont.net/allfont.css?fonts=gosmicksans" rel="stylesheet" type="text/css" />
+
+  <!--google fonts-->
+
+  <!--font awesome-->
+  <link rel="stylesheet" href="/content/css/font-awesome.css">
+
+  <!--end font awesome-->
+  <link rel="stylesheet" href="/content/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/content/css/normalize.css">
+  <link rel="stylesheet" href="/content/css/style.css?v=2">
+  <script src="/content/js/vendor/modernizr-2.6.2.min.js"></script>
+  <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    
+    {{ template "styles" . }}
+    <script src="//load.sumome.com/" data-sumo-site-id="2a41265a63287b84c37e86faf5544a6bcf5de621e7d325b8ca1b162f745b5e8e" async="async"></script>
+</head>
+<body>
+
+
+
+  <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="header_top">
+            <ul>
+              <li><a href="/a-propos-de-parentzie">À Propos</a></li>
+              <li><a href="/contactez-nous">contact</a></li>
+              <li class="background_list"><a href="/infolettre">recevez notre infolettre</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--end row-->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="header_middle_logo">
+            <figure>
+              <a href="/"><img src="/content/img/logo_parentzie.png" alt="Parentzie" class="img-responsive" /></a>
+              <figcaption>Vivre la famille naturellement</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="custom_searchform">
+            <form class="form-inline" id="search" action="/recherche">
+              <input type="hidden" name="cx" value="012273906417252734221:qoctmkdpckk" />
+              <input type="hidden" name="cof" value="FORID:10" />
+              <input type="hidden" name="ie" value="UTF-8" />
+              <div class="form-group">
+                <input type="text" class="form-control" name="q" />
+              </div>
+
+              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <!--end row-->
+
+    </div>
+    <!--end container-->
+
+  </header>
+  <!-- end header-->
+
+  <nav class="main_navigation navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="#">Brand</a> -->
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="main_collapse collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/articles/manger-pour-vivre">Manger pour vivre <span class="listspan"></span></a></li>
+          <li><a href="/articles/vie-en-mouvement">Vie en mouvement <span class="listspan"></span></a></li>
+          <li><a href="/articles/vie-de-parents">Vie de parents<span class="listspan"></span></a></li>
+          <li><a href="/articles/vivre-en-vert">Vivre en vert<span class="listspan"></span></a></li>
+          <li><a href="/articles/dans-nos-vies">Dans nos vies<span class="listspan"></span></a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+  <!--end nav-->
+
+  <section class="main_content_area">
+    <h2 class="section_header">main</h2>
+    <div class="container">
+      <div class="row">
+        {{ template "content" . }}
+        <div class="col-md-4">
+          {{ template "sidebar" . }}
+          
+          <div class="facebook_page_plugin">
+							<iframe width="100%" height="1000px" frameborder="0" name="f17a9ac7c0ca6d" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like_box Facebook Social Plugin" style="border: medium none; visibility: visible; width:100%; height: 540px;" src="http://www.facebook.com/plugins/like_box.php?app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D42%23cb%3Df18697be0ebe9fc%26domain%3Dparentzie.com%26origin%3Dhttp%253A%252F%252Fparentzie.com%252Ff2093e95efddbf%26relation%3Dparent.parent&amp;container_width=326&amp;header=false&amp;href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FParentziecom%2F311194251051&amp;locale=en_US&amp;sdk=joey&amp;show_faces=true&amp;stream=true&amp;width=360" class=""></iframe>
+						</div>
+						
+						<div class="twitter_follow_button">
+						    <a class="twitter-timeline" href="https://twitter.com/parentzie" data-widget-id="331205206182346752">Tweets par @parentzie</a>
+							<script type="text/javascript">!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+
+          
+						</div>
+						
+						<div class="pinterest_pinarea">
+							<a data-pin-do="embedBoard" href="http://pinterest.com/caromayrand/parentziecom/"></a>
+						</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end main_content_area-->
+
+  <div class="clearfix"></div>
+
+  <footer class="footerarea">
+    <div class="footerzigzug"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="single_footerlist">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="/">Accueil</a></li>
+              <li><a href="/a-propos-de-parentzie">À propos</a></li>
+            </ul>
+          </div>
+
+          <div class="hidden-xs copyright">
+            &copy;&nbsp;Parentzie.com - Tous droits réservés
+          </div>
+
+        </div>
+        <div class="col-sm-2 col-md-3">
+          <div class="single_footerlist">
+            <h3>Nous suivre</h3>
+            <ul>
+              <li><a href="https://twitter.com/parentzie">twitter</a></li>
+              <li><a href="https://www.facebook.com/pages/Parentziecom/311194251051">facebook</a></li>
+              <li><a href="/kit-de-promo">Kit de promo</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="single_footerlist">
+            <h3>Utilisation du site</h3>
+            <ul>
+              <li><a href="/vie-privee">Vie privée</a></li>
+              <li><a href="/termes">Termes d'utilisation</a></li>
+            </ul>
+          </div>
+
+          <div class="visible-xs copyright">
+            &copy;&nbsp;Parentzie.com - Tous droits réservés
+          </div>
+
+        </div>
+        <div class="col-sm-4 col-md-3">
+          <div class="footer_logoarea">
+            <figure>
+              <a href="/infolettre"><img src="/content/img/btn_footer_subscribe.png" alt="Infolettre" class="img-responsive" /></a>
+            </figure>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </footer>
+
+
+
+  <!-- script here -->
+
+  <script>
+    window.jQuery || document.write('<script src="/content/js/vendor/jquery-1.11.3.min.js"><\/script>')
+  </script>
+  <script src="/content/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+  
+  {{ template "scripts" . }}
+  
+  <script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-3132262-17']);
+		_gaq.push(['_trackPageview']);
+
+		(function () {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+</script>
+
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=search&lang=fr&sitesearch=true"></script>
+
+  
+</body>
+</html>
+{{ end }} 
+{{ define "styles" }}{{ end }} 
+{{ define "content" }}{{ end }}
+ {{ define "sidebar" }}{{ end }}
+{{ define "scripts" }}{{ end }} 
