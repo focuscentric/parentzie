@@ -297,7 +297,7 @@ $(function () {
 
     $.ajax({
       type: 'POST',
-      url: '/save/' + id,
+      url: '/save/' + id + document.location.search,
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(posted),
@@ -323,4 +323,3 @@ $(function () {
     }
   });
 });
-    
